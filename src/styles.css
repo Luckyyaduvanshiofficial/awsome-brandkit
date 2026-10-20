@@ -1,0 +1,148 @@
+/* biome-ignore-all lint/complexity/noImportantStyles: reduced-motion overrides must win. */
+@import "@fontsource-variable/instrument-sans";
+@import "@fontsource/instrument-serif/400.css";
+@import "@fontsource-variable/jetbrains-mono";
+@import "tailwindcss";
+
+@theme {
+  --color-paper: #f5f2ea;
+  --color-surface: #fcfaf5;
+  --color-ink: #181613;
+  --color-muted: #68625a;
+  --color-rule: #d9d3c7;
+  --color-accent: #d9482f;
+  --color-pass: #2f6b4f;
+  --color-warn: #8a5a00;
+  --color-error: #a3261b;
+  --font-sans: "Instrument Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  color: var(--color-ink);
+  background: var(--color-paper);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    linear-gradient(90deg, rgba(217, 211, 199, 0.28) 1px, transparent 1px) 0 0 / 96px 96px,
+    var(--color-paper);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+.checkerboard {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #e9e4d8 25%, transparent 25%),
+    linear-gradient(-45deg, #e9e4d8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #e9e4d8 75%),
+    linear-gradient(-45deg, transparent 75%, #e9e4d8 75%);
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+  background-size: 16px 16px;
+}
+
+.proof-grid {
+  background-image:
+    linear-gradient(to right, rgba(217, 211, 199, 0.55) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 211, 199, 0.55) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.crop-mark {
+  position: relative;
+}
+
+.crop-mark::before,
+.crop-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.crop-mark::before {
+  border-top: 1px solid var(--color-ink);
+  border-left: 1px solid var(--color-ink);
+  width: 14px;
+  height: 14px;
+}
+
+.crop-mark::after {
+  border-bottom: 1px solid var(--color-ink);
+  border-right: 1px solid var(--color-ink);
+  width: 14px;
+  height: 14px;
+  inset: auto 0 0 auto;
+}
+
+.paper-panel {
+  background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+  border: 1px solid var(--color-rule);
+  box-shadow: 0 1px 0 rgba(24, 22, 19, 0.04);
+}
+
+.rule-table th {
+  border-bottom: 1px solid var(--color-ink);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.rule-table td {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-rule) 74%, transparent);
+  vertical-align: top;
+}
+
+.rule-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
